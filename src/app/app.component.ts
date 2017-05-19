@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 
-// Create a Hero class with id and name properties
-export class Hero{
-
-  id: number;
-  name: string;
-
-}
+//import the hero class
+import { Hero } from './hero.auxiliar';
 
 //create a constant HEROES array of type Hero
 const HEROES: Hero[] = [

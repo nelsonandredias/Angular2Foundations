@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 
 // import of all app components
 import { AppComponent } from './app.component';
+import { heroDetailComponent } from './heroDetail/heroDetail.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    heroDetailComponent
   ],
   //metadata's imports array contains the list of external modules that the app uses
   imports: [
