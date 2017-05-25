@@ -3,10 +3,14 @@
  */
 
 // impot the Component library
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params }   from '@angular/router';
+import { Location }                 from '@angular/common';
+import 'rxjs/add/operator/switchMap';
 
 //import the hero class
 import { Hero } from 'app/auxiliar/hero.auxiliar';
+import { superHeroesService } from '../services/superheroes.service'; // provides superheroes list
 
 // heroDetail component decorator - provides the Angular metadata for the component
 @Component({
@@ -16,7 +20,24 @@ import { Hero } from 'app/auxiliar/hero.auxiliar';
 })
 
 
-export class heroDetailComponent {
+export class heroDetailComponent implements OnInit{
+
+
+  constructor(
+    private heroService: superHeroesService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params
+      .switchMap((params: Params) => this.heroService.getHero(+params['id']))
+      .subscribe(hero => this.hero = hero);
+  }
+
+  goBack(): void {
+    this.location.back(); // the Location service allows to step back in the browser's history (go to previous page)
+  }
 
   // must use @Input() to pass values between components
 

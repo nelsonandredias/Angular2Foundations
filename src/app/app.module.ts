@@ -27,7 +27,7 @@ import { superHeroesService } from './services/superheroes.service';
     //array of routes configuration
     RouterModule.forRoot([
       /* Make sure when the app starts, it should show the dashboard
-       and display a /dashboard URL in the browser address bar. */
+       and display a "/dashboard" URL in the browser address bar. */
       {
         path: '',
         redirectTo: '/dashboard',
@@ -40,10 +40,14 @@ import { superHeroesService } from './services/superheroes.service';
       {
         path: 'dashboard',
         component: dashboardComponent
-      }
+      },
+      {
+        path: 'detail/:id',
+        component: heroDetailComponent
+      },
     ])
   ],
-  providers: [],
+  providers: [superHeroesService],
   bootstrap: [appComponent]
 })
 export class AppModule {

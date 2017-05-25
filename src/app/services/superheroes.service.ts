@@ -20,4 +20,10 @@ export class superHeroesService {
     return Promise.resolve(HEROES);
   }
 
+  //method that filters and returns the heroes list from getHeroes() by id
+  getHero(id: number): Promise<Hero> {
+    return this.getHeroes()
+      .then(heroes => heroes.find(hero => hero.id === id));
+  }
+
 }
